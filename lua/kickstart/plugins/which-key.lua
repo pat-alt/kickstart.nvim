@@ -80,6 +80,7 @@ return {
         { '<leader>qf', ":lua require'quarto'.quartoPreview({ args = '--port 4242 --no-browser' })<cr>", desc = '[f]ixed port preview' },
         { '<leader>qq', ':QuartoClosePreview<cr>', desc = '[q]uit preview' },
         { '<leader>qp', ':QuartoPreview<cr>', desc = '[p]review' },
+        { '<leader>qe', ':lua require("nabla").popup()<CR>', desc = '[E]quation' },
         -- Vim
         { '<leader>v', group = '[v]im' },
         { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },
