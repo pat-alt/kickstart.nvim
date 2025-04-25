@@ -51,9 +51,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- nvim-tree
-vim.keymap.set('n', 'f', ':NvimTreeOpen<cr>', { desc = 'Open file explorer.' })
-
 -- Find and replace
 vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
 

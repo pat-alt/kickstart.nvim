@@ -11,12 +11,16 @@ return {
         default_method = 'slime',
       },
     },
+    -- BUG: For some reason slime (?) inserts extra tokens (']',')') in some cases.
     config = function()
       local runner = require 'quarto.runner'
       vim.keymap.set('n', '<C-c>c', runner.run_cell, { desc = 'run cell', silent = true })
       vim.keymap.set('n', '<C-c>a', runner.run_above, { desc = 'run cell and above', silent = true })
       vim.keymap.set('n', '<C-c>A', runner.run_all, { desc = 'run all cells', silent = true })
-      vim.keymap.set('n', '<C-c>l', runner.run_line, { desc = 'run line', silent = true })
+      vim.keymap.set('n', '<C-c>l', function()
+        runner.run_line()
+        vim.cmd 'normal! j'
+      end, { desc = 'run line', silent = true })
       vim.keymap.set('v', '<C-c>r', runner.run_range, { desc = 'run visual range', silent = true })
       -- vim.keymap.set('n', '<C-c>RA', function()
       --   runner.run_all(true)
