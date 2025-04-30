@@ -86,9 +86,26 @@ return {
         { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },
         { '<leader>vt', toggle_light_dark_theme, desc = '[t]oggle light/dark theme' },
         { '<leader>vl', ':Lazy<cr>', desc = '[L]azy' },
+        -- Mason
         { '<leader>vm', group = '[M]ason' },
         { '<leader>vmo', ':Mason<cr>', desc = '[O]pen' },
         { '<leader>vmi', ':MasonInstall ', desc = '[I]nstall' },
+        -- Persistence
+        { '<leader>vp', group = '[P]ersistence' },
+        {
+          '<leader>vps',
+          function()
+            require('persistence').select()
+          end,
+          desc = '[s]elect',
+        },
+        {
+          '<leader>vpl',
+          function()
+            require('persistence').load()
+          end,
+          desc = '[l]oad',
+        },
         -- Insert comments
         { '<leader>i', group = '[I]nsert' },
       },
