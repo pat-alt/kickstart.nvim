@@ -53,5 +53,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Find and replace
 vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
+vim.keymap.set('n', '<C-s>', [[:%s/]])
 
 -- vim: ts=2 sts=2 sw=2 et
