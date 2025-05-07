@@ -74,6 +74,9 @@ return {
           find_files = {
             theme = 'ivy',
           },
+          colorscheme = {
+            enable_preview = true,
+          },
         },
 
         extensions = {
