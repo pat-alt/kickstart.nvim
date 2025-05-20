@@ -16,3 +16,5 @@ Syncing can be a little annoying, because I've moved to a more modular structure
 1. Merge updates from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) into the #updates-from-master branch. 
 2. Resolve inevitable conflicts.
 3. Merge into #main.
+
+
