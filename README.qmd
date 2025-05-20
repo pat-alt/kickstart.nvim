@@ -1,0 +1,18 @@
+---
+format: 
+  commonmark:
+    variant: -raw_html+tex_math_dollars
+    wrap: none
+---
+
+# kickstart.nvim
+
+This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
+
+## Syncing Fork
+
+Syncing can be a little annoying, because I've moved to a more modular structure. Still, for the time being, I'm trying to sync regularly. To do so:
+
+1. Merge updates from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) into the #updates-from-master branch. 
+2. Resolve inevitable conflicts.
+3. Merge into #main.
