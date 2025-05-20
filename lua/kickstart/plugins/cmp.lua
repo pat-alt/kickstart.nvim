@@ -35,6 +35,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'jmbuhr/cmp-pandoc-references',
     },
     config = function()
       -- See `:help cmp`
@@ -71,9 +72,9 @@ return {
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          ['<Tab>'] = cmp.mapping.confirm { select = true },
-          ['<Up>'] = cmp.mapping.select_next_item(),
-          ['<Down>'] = cmp.mapping.select_prev_item(),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
@@ -112,6 +113,7 @@ return {
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
+          { name = 'pandoc_references' },
         },
       }
     end,

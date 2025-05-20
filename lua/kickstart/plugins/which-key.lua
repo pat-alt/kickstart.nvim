@@ -68,6 +68,20 @@ return {
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>z', ':ZenMode<cr>', desc = '[Z]en mode' },
+        { '<leader>m', ':Mtm<cr>', desc = '[M]arkdown table mode' },
+        -- Toggle
+        { '<leader>te', ':lua require("nabla").popup()<CR>', desc = '[E]quation' },
+        {
+          '<leader>td',
+          function()
+            if vim.o.background == 'light' then
+              vim.o.background = 'dark'
+            else
+              vim.o.background = 'light'
+            end
+          end,
+          desc = '[d]ark theme',
+        },
         -- Search
         { '<leader>st', ':TodoTelescope<cr>', desc = '[T]odo' },
         -- Search and Replace
@@ -83,11 +97,27 @@ return {
         -- Vim
         { '<leader>v', group = '[v]im' },
         { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },
-        { '<leader>vt', toggle_light_dark_theme, desc = '[t]oggle light/dark theme' },
         { '<leader>vl', ':Lazy<cr>', desc = '[L]azy' },
+        -- Mason
         { '<leader>vm', group = '[M]ason' },
         { '<leader>vmo', ':Mason<cr>', desc = '[O]pen' },
         { '<leader>vmi', ':MasonInstall ', desc = '[I]nstall' },
+        -- Persistence
+        { '<leader>vp', group = '[P]ersistence' },
+        {
+          '<leader>vps',
+          function()
+            require('persistence').select()
+          end,
+          desc = '[s]elect',
+        },
+        {
+          '<leader>vpl',
+          function()
+            require('persistence').load()
+          end,
+          desc = '[l]oad',
+        },
         -- Insert comments
         { '<leader>i', group = '[I]nsert' },
       },
