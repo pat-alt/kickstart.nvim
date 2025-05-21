@@ -14,7 +14,7 @@ return {
     -- BUG: For some reason slime (?) inserts extra tokens (']',')') in some cases.
     config = function()
       local runner = require 'quarto.runner'
-      vim.keymap.set('n', '<C-c>c', runner.run_cell, { desc = 'run cell', silent = true })
+      vim.keymap.set('n', '<C-c><cr>', runner.run_cell, { desc = 'run cell', silent = true })
       vim.keymap.set('n', '<C-c>a', runner.run_above, { desc = 'run cell and above', silent = true })
       vim.keymap.set('n', '<C-c>A', runner.run_all, { desc = 'run all cells', silent = true })
       vim.keymap.set('n', '<C-c>l', function()
@@ -36,13 +36,7 @@ return {
     'jpalardy/vim-slime',
     dev = false,
     init = function()
-      vim.g.slime_target = 'tmux'
-      -- vim.g.slime_default_config = {"socket_name" = "default", "target_pane" = "{last}"}
-      vim.g.slime_default_config = {
-        -- Lua doesn't have a string split function!
-        socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
-        target_pane = '{bottom}',
-      }
+      vim.g.slime_target = 'neovim'
     end,
     config = function()
       vim.g.slime_input_pid = false

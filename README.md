@@ -2,7 +2,9 @@
 
 # kickstart.nvim
 
-This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
+This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). I’ve started using Neovim in 2025H1, so I’m still very new to this. For this reason, I’m including the following disclaimer here:
+
+> \[!WARNING\] - I’m new to this. - You almost definitely do not want to fork this repo for your own config. - I’m currently using this README mostly to jot down notes for myself.
 
 ## Syncing Fork
 
@@ -11,3 +13,9 @@ Syncing can be a little annoying, because I’ve moved to a more modular structu
 1.  Merge updates from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) into the \#updates-from-master branch.
 2.  Resolve inevitable conflicts.
 3.  Merge into \#main.
+
+## Best Practices … maybe
+
+### Lazy
+
+- Use `opts` to specify config options. Use `config` only for more complex configurations.

@@ -1,6 +1,6 @@
 local wk = require 'which-key'
 
-require 'custom.config.which-key.insert-code'
+require 'custom.config.which-key.code'
 
 -- normal mode
 wk.add({

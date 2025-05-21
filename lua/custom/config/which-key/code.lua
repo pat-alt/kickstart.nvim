@@ -40,17 +40,36 @@ local insert_julia_chunk = function()
   insert_code_chunk 'julia'
 end
 
-local insert_bash_chunk = function()
-  insert_code_chunk 'bash'
+-- Open new terminal
+local function new_terminal(lang)
+  vim.cmd('vsplit term://' .. lang)
 end
 
---show kepbindings with whichkey
+local function new_terminal_python()
+  new_terminal 'python'
+end
+
+local function new_terminal_r()
+  new_terminal 'R --no-save'
+end
+
+local function new_terminal_julia()
+  new_terminal 'julia'
+end
+
+--show keybindings with whichkey
 --add your own here if you want them to
 --show up in the popup as well
 
 -- normal mode
 wk.add({
   { '<leader>i', group = 'Insert' },
-  { '<leader>ip', insert_py_chunk, desc = 'python code chunk' },
-  { '<c-i>', insert_r_chunk, desc = 'r code chunk' },
+  { '<c-i>', insert_julia_chunk, desc = 'Julia chunk' },
+  { '<leader>ij', insert_julia_chunk, desc = '[J]ulia chunk' },
+  { '<leader>ip', insert_py_chunk, desc = '[P]ython chunk' },
+  { '<leader>ir', insert_r_chunk, desc = '[R] chunk' },
+  { '<leader>il', insert_lua_chunk, desc = '[L]ua chunk' },
+  { '<leader>cj', new_terminal_julia, desc = 'New [J]ulia terminal' },
+  { '<leader>cp', new_terminal_python, desc = 'New [P]ython terminal' },
+  { '<leader>cr', new_terminal_r, desc = 'New [R] terminal' },
 }, { mode = 'n' })
