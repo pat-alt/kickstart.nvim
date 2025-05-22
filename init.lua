@@ -95,6 +95,7 @@ vim.g.have_nerd_font = true
 
 -- [[ Custom things ]]
 require 'custom.config.theme-terminal'
+-- require 'custom.config.julials'
 
 -- [[ Setting options ]]
 require 'options'

@@ -40,13 +40,20 @@ local insert_julia_chunk = function()
   insert_code_chunk 'julia'
 end
 
--- Open new terminal
+-- Open new terminal (tmux pane)
 local function new_terminal(lang)
-  vim.cmd('vsplit term://' .. lang)
+  -- Create a new tmux pane below the current one and start the language REPL
+  local cmd = string.format("tmux split-window -h '%s'", lang)
+  os.execute(cmd)
 end
 
+-- -- Open new terminal (Neovim pane)
+-- local function new_terminal(lang)
+--   vim.cmd('vsplit term://' .. lang)
+-- end
+
 local function new_terminal_python()
-  new_terminal 'python'
+  new_terminal 'python || python3'
 end
 
 local function new_terminal_r()
