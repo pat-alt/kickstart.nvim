@@ -41,7 +41,7 @@ return {
       vim.g.slime_default_config = {
         -- Lua doesn't have a string split function!
         socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
-        target_pane = '{bottom}',
+        target_pane = '{right}',
       }
     end,
     config = function()
