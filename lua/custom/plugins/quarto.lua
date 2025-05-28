@@ -14,7 +14,7 @@ return {
     -- BUG: For some reason slime (?) inserts extra tokens (']',')') in some cases.
     config = function()
       local runner = require 'quarto.runner'
-      vim.keymap.set('n', '<C-c><CR>', runner.run_cell, { desc = 'run cell', silent = true })
+      vim.keymap.set('n', '<C-c>c', runner.run_cell, { desc = 'run cell', silent = true })
       vim.keymap.set('n', '<C-c>a', runner.run_above, { desc = 'run cell and above', silent = true })
       vim.keymap.set('n', '<C-c>A', runner.run_all, { desc = 'run all cells', silent = true })
       vim.keymap.set('n', '<C-c>l', function()
