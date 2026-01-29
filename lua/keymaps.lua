@@ -54,11 +54,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Find and replace
 vim.keymap.set('n', '<C-s>', [[:%s/]])
 vim.keymap.set('n', '<leader>rf', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Search and replace in [f]ile' })
-vim.keymap.set(
-  'n',
-  '<leader>rq',
-  ':cfdo %s///gc | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>',
-  { desc = 'Replace in quickfix list' }
-)
+vim.keymap.set('n', '<leader>rq', [[:cfdo %s/\<<C-r><C-w>\>//gc | update<Left><Left><Left><Left>]], { desc = 'Replace in quickfix list' })
 
 -- vim: ts=2 sts=2 sw=2 et
