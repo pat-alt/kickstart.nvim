@@ -89,8 +89,6 @@ return {
         { '<leader>st', ':TodoTelescope<cr>', desc = '[T]odo' },
         -- Search and Replace
         { '<leader>r', group = '[R]eplace' },
-        { '<leader>rf', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Search and replace in [f]ile' },
-        -- TODO: add find+and replace for project dir
         -- Quarto
         { '<leader>q', group = '[q]uarto' },
         { '<leader>qh', ':QuartoHelp ', desc = '[h]elp' },
