@@ -52,7 +52,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Find and replace
-vim.keymap.set('n', '<C-s>', [[:%s/]])
+vim.keymap.set('n', '<C-s>', function()
+  -- Check if we're in a quickfix window
+  if vim.fn.getwininfo(vim.fn.win_getid())[1].quickfix == 1 then
+    return ':cfdo %s//gc | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>'
+  else
+    return ':%s/'
+  end
+end, { expr = true, desc = 'Search and replace' })
 vim.keymap.set('n', '<leader>rf', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Search and replace in [f]ile' })
 vim.keymap.set('n', '<leader>rq', [[:cfdo %s/\<<C-r><C-w>\>//gc | update<Left><Left><Left><Left>]], { desc = 'Replace in quickfix list' })
 
