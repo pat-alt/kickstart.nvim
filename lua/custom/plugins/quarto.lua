@@ -5,6 +5,14 @@ return {
       lspFeatures = {
         enabled = true,
         chunks = 'curly',
+        languages = { 'julia', 'python', 'bash', 'r' },
+        diagnostics = {
+          enabled = true,
+          triggers = { 'BufWritePost' },
+        },
+        completion = {
+          enabled = true,
+        },
       },
       codeRunner = {
         enabled = true,
@@ -25,6 +33,14 @@ return {
       -- vim.keymap.set('n', '<C-c>RA', function()
       --   runner.run_all(true)
       -- end, { desc = 'run all cells of all languages', silent = true })
+
+      -- Auto-activate otter for LSP features when opening quarto files
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'quarto',
+        callback = function()
+          require('otter').activate { 'julia', 'python', 'bash' }
+        end,
+      })
     end,
     dependencies = {
       'jmbuhr/otter.nvim',
