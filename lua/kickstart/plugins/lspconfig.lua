@@ -1,4 +1,11 @@
 -- LSP Plugins
+
+-- Suppress lspconfig deprecation warning for nvim 0.11
+if vim.fn.has 'nvim-0.11' == 1 then
+  ---@diagnostic disable-next-line: duplicate-set-field
+  vim.deprecate = function() end
+end
+
 return {
 
   { -- for lsp features in code cells / embedded code
