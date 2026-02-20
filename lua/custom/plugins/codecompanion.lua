@@ -11,14 +11,11 @@ return {
   },
   config = function()
     require('codecompanion').setup {
-      strategies = {
+      interactions = {
         chat = {
           adapter = 'ollama',
         },
         inline = {
-          adapter = 'ollama',
-        },
-        agent = {
           adapter = 'ollama',
         },
       },
@@ -36,7 +33,7 @@ return {
             },
             schema = {
               model = {
-                default = 'qwen2.5-coder:7b',
+                default = 'rnj-1:latest',
               },
               num_ctx = {
                 default = 16384,
