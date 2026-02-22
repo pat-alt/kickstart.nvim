@@ -61,7 +61,11 @@ local function new_terminal_r()
 end
 
 local function new_terminal_julia()
-  new_terminal 'julia'
+  new_terminal 'julia --project'
+end
+
+local function new_terminal_julia_release()
+  new_terminal 'julia +release --project'
 end
 
 --show keybindings with whichkey
@@ -77,6 +81,7 @@ wk.add({
   { '<leader>ir', insert_r_chunk, desc = '[R] chunk' },
   { '<leader>il', insert_lua_chunk, desc = '[L]ua chunk' },
   { '<leader>cj', new_terminal_julia, desc = 'New [J]ulia terminal' },
+  { '<leader>cJ', new_terminal_julia_release, desc = 'New [J]ulia terminal ([r]elease channel)' },
   { '<leader>cp', new_terminal_python, desc = 'New [P]ython terminal' },
   { '<leader>cr', new_terminal_r, desc = 'New [R] terminal' },
 }, { mode = 'n' })

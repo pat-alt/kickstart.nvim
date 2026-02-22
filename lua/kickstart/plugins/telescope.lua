@@ -64,12 +64,19 @@ return {
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          mappings = {
+            i = {
+              ['<M-Up>'] = require('telescope.actions').cycle_history_prev,
+              ['<M-Down>'] = require('telescope.actions').cycle_history_next,
+              ['<c-enter>'] = 'to_fuzzy_refine',
+              ['<C-r>'] = function()
+                require('telescope.builtin').command_history()
+              end,
+            },
+          },
+        },
+
         pickers = {
           find_files = {
             theme = 'ivy',
@@ -84,11 +91,12 @@ return {
             require('telescope.themes').get_dropdown(),
           },
           live_grep_args = {
+            additional_args = { '--type-add', 'qmd:*.qmd' },
             auto_quoting = true,
             mappings = {
               i = {
-                ['C-k'] = lga_actions.quote_prompt(),
-                ['C-i'] = lga_actions.quote_prompt { postfix = ' -t ' },
+                ['<C-k>'] = lga_actions.quote_prompt(),
+                ['<C-i>'] = lga_actions.quote_prompt { postfix = ' --iglob ' },
               },
             },
           },

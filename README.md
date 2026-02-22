@@ -14,6 +14,50 @@ Syncing can be a little annoying, because I’ve moved to a more modular structu
 2.  Resolve inevitable conflicts.
 3.  Merge into \#main.
 
+## Julia
+
+Mason cannot properly install Julia LS. Instead, Julia LS is set up through Julia’s own native package manager `Pkg` with a dedicated Julia LS environment:
+
+``` lua
+-- Use lspconfig API (works on both nvim 0.10 and 0.11)
+require('lspconfig').julials.setup {
+  capabilities = capabilities,
+  on_new_config = function(new_config, _)
+    local server_path = vim.fn.expand("~/.julia/environments/nvim-lspconfig")
+    if not require('lspconfig.util').path.is_dir(server_path) then
+      vim.notify(
+        'Julia LS: Creating environment at ' .. server_path,
+        vim.log.levels.INFO
+      )
+      vim.fn.system({
+        'julia',
+        '--startup-file=no',
+        '--history-file=no',
+        '--project=' .. server_path,
+        '-e',
+        'using Pkg; Pkg.add("LanguageServer"); Pkg.add("SymbolServer")',
+      })
+    end
+  end,
+}
+```
+
+The environment is created as follows:
+
+``` bash
+julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer"); Pkg.add("SymbolServer")'
+```
+
+If everything is set up correctly, you should have autocomplete in the following Julia cell:
+
+``` julia
+println("hello")
+```
+
+    hello
+
+> \[!warning\] Deprecated `lspconfig` API This is using the `lspconfig` API which will be deprecated in future versions of nvim.
+
 ## Best Practices … maybe
 
 ### Lazy

@@ -32,11 +32,11 @@ wk.add({
   { '<leader>rf', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Search and replace in [f]ile' },
   -- TODO: add find+and replace for project dir
   -- Quarto
-  { '<leader>q', group = '[q]uarto' },
-  { '<leader>qh', ':QuartoHelp ', desc = '[h]elp' },
-  { '<leader>qf', ":lua require'quarto'.quartoPreview({ args = '--port 4242 --no-browser' })<cr>", desc = '[f]ixed port preview' },
-  { '<leader>qq', ':QuartoClosePreview<cr>', desc = '[q]uit preview' },
-  { '<leader>qp', ':QuartoPreview<cr>', desc = '[p]review' },
+  { '<leader>Q', group = '[q]uarto' },
+  { '<leader>Qh', ':QuartoHelp ', desc = '[h]elp' },
+  { '<leader>Qf', ":lua require'quarto'.quartoPreview({ args = '--port 4242 --no-browser' })<cr>", desc = '[f]ixed port preview' },
+  { '<leader>Qq', ':QuartoClosePreview<cr>', desc = '[q]uit preview' },
+  { '<leader>Qp', ':QuartoPreview<cr>', desc = '[p]review' },
   -- Vim
   { '<leader>v', group = '[v]im' },
   { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },
