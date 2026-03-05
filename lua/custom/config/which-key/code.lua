@@ -42,15 +42,9 @@ end
 
 -- Open new terminal (tmux pane)
 local function new_terminal(lang)
-  -- Create a new tmux pane below the current one and start the language REPL
   local cmd = string.format("tmux split-window -h '%s'", lang)
   os.execute(cmd)
 end
-
--- -- Open new terminal (Neovim pane)
--- local function new_terminal(lang)
---   vim.cmd('vsplit term://' .. lang)
--- end
 
 local function new_terminal_python()
   new_terminal 'python || python3'
@@ -68,20 +62,20 @@ local function new_terminal_julia_release()
   new_terminal 'julia +release --project'
 end
 
---show keybindings with whichkey
---add your own here if you want them to
---show up in the popup as well
-
 -- normal mode
-wk.add({
-  { '<leader>i', group = 'Insert' },
-  { '<c-i>', insert_julia_chunk, desc = 'Julia chunk' },
-  { '<leader>ij', insert_julia_chunk, desc = '[J]ulia chunk' },
-  { '<leader>ip', insert_py_chunk, desc = '[P]ython chunk' },
-  { '<leader>ir', insert_r_chunk, desc = '[R] chunk' },
-  { '<leader>il', insert_lua_chunk, desc = '[L]ua chunk' },
-  { '<leader>cj', new_terminal_julia, desc = 'New [J]ulia terminal' },
-  { '<leader>cJ', new_terminal_julia_release, desc = 'New [J]ulia terminal ([r]elease channel)' },
-  { '<leader>cp', new_terminal_python, desc = 'New [P]ython terminal' },
-  { '<leader>cr', new_terminal_r, desc = 'New [R] terminal' },
-}, { mode = 'n' })
+wk.register({
+  i = { name = '+Insert' },
+  ij = { insert_julia_chunk, '[J]ulia chunk' },
+  ip = { insert_py_chunk, '[P]ython chunk' },
+  ir = { insert_r_chunk, '[R] chunk' },
+  il = { insert_lua_chunk, '[L]ua chunk' },
+  cj = { new_terminal_julia, 'New [J]ulia terminal' },
+  cJ = { new_terminal_julia_release, 'New [J]ulia terminal ([r]elease channel)' },
+  cp = { new_terminal_python, 'New [P]ython terminal' },
+  cr = { new_terminal_r, 'New [R] terminal' },
+}, { prefix = '<leader>' })
+
+-- <c-i> mapping (no leader prefix)
+wk.register {
+  ['<c-i>'] = { insert_julia_chunk, 'Julia chunk' },
+}

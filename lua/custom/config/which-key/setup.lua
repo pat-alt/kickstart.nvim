@@ -3,19 +3,18 @@ local wk = require 'which-key'
 require 'custom.config.which-key.code'
 
 -- normal mode
-wk.add({
-  { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-  { '<leader>d', group = '[D]ocument' },
-  { '<leader>s', group = '[S]earch' },
-  { '<leader>w', group = '[W]orkspace' },
-  { '<leader>t', group = '[T]oggle' },
-  { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-  { '<leader>z', ':ZenMode<cr>', desc = '[Z]en mode' },
-  { '<leader>m', ':Mtm<cr>', desc = '[M]arkdown table mode' },
+wk.register({
+  c = { name = '+[C]ode' },
+  d = { name = '+[D]ocument' },
+  s = { name = '+[S]earch' },
+  w = { name = '+[W]orkspace' },
+  t = { name = '+[T]oggle' },
+  h = { name = '+Git [H]unk' },
+  z = { ':ZenMode<cr>', '[Z]en mode' },
+  m = { ':Mtm<cr>', '[M]arkdown table mode' },
   -- Toggle
-  { '<leader>te', ':lua require("nabla").popup()<CR>', desc = '[E]quation' },
-  {
-    '<leader>td',
+  te = { ':lua require("nabla").popup()<CR>', '[E]quation' },
+  td = {
     function()
       if vim.o.background == 'light' then
         vim.o.background = 'dark'
@@ -23,44 +22,45 @@ wk.add({
         vim.o.background = 'light'
       end
     end,
-    desc = '[d]ark theme',
+    '[d]ark theme',
   },
   -- Search
-  { '<leader>st', ':TodoTelescope<cr>', desc = '[T]odo' },
+  st = { ':TodoTelescope<cr>', '[T]odo' },
   -- Search and Replace
-  { '<leader>r', group = '[R]eplace' },
-  { '<leader>rf', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Search and replace in [f]ile' },
-  -- TODO: add find+and replace for project dir
+  r = { name = '+[R]eplace' },
   -- Quarto
-  { '<leader>Q', group = '[q]uarto' },
-  { '<leader>Qh', ':QuartoHelp ', desc = '[h]elp' },
-  { '<leader>Qf', ":lua require'quarto'.quartoPreview({ args = '--port 4242 --no-browser' })<cr>", desc = '[f]ixed port preview' },
-  { '<leader>Qq', ':QuartoClosePreview<cr>', desc = '[q]uit preview' },
-  { '<leader>Qp', ':QuartoPreview<cr>', desc = '[p]review' },
+  Q = { name = '+[q]uarto' },
+  Qh = { ':QuartoHelp ', '[h]elp' },
+  Qf = { ":lua require'quarto'.quartoPreview({ args = '--port 4242 --no-browser' })<cr>", '[f]ixed port preview' },
+  Qq = { ':QuartoClosePreview<cr>', '[q]uit preview' },
+  Qp = { ':QuartoPreview<cr>', '[p]review' },
   -- Vim
-  { '<leader>v', group = '[v]im' },
-  { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },
-  { '<leader>vl', ':Lazy<cr>', desc = '[L]azy' },
+  v = { name = '+[v]im' },
+  vc = { ':Telescope colorscheme<cr>', '[c]olortheme' },
+  vl = { ':Lazy<cr>', '[L]azy' },
   -- Mason
-  { '<leader>vm', group = '[M]ason' },
-  { '<leader>vmo', ':Mason<cr>', desc = '[O]pen' },
-  { '<leader>vmi', ':MasonInstall ', desc = '[I]nstall' },
+  vm = { name = '+[M]ason' },
+  vmo = { ':Mason<cr>', '[O]pen' },
+  vmi = { ':MasonInstall ', '[I]nstall' },
   -- Persistence
-  { '<leader>vp', group = '[P]ersistence' },
-  {
-    '<leader>vps',
+  vp = { name = '+[P]ersistence' },
+  vps = {
     function()
       require('persistence').select()
     end,
-    desc = '[s]elect',
+    '[s]elect',
   },
-  {
-    '<leader>vpl',
+  vpl = {
     function()
       require('persistence').load()
     end,
-    desc = '[l]oad',
+    '[l]oad',
   },
   -- Insert comments
-  { '<leader>i', group = '[I]nsert' },
-}, { mode = 'n' })
+  i = { name = '+[I]nsert' },
+}, { prefix = '<leader>' })
+
+-- Git hunk group also in visual mode
+wk.register({
+  h = { name = '+Git [H]unk' },
+}, { prefix = '<leader>', mode = 'v' })

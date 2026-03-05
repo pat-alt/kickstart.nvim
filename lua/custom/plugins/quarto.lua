@@ -1,6 +1,8 @@
 return {
   {
+    -- DISABLED: requires Neovim >= 0.9
     'quarto-dev/quarto-nvim',
+    enabled = false,
     opts = {
       lspFeatures = {
         enabled = true,

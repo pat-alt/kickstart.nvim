@@ -1,11 +1,13 @@
 return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    tag = 'v0.8.5.2',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'julia', 'r', 'python', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      -- Note: 'luadoc' and 'vimdoc' are not available in treesitter v0.8.x
+      ensure_installed = { 'julia', 'r', 'python', 'bash', 'c', 'diff', 'html', 'lua', 'markdown', 'markdown_inline', 'query', 'vim' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
