@@ -4,7 +4,16 @@
 
 This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). I’ve started using Neovim in 2025H1, so I’m still very new to this. For this reason, I’m including the following disclaimer here:
 
-> \[!WARNING\] - I’m new to this. - You almost definitely do not want to fork this repo for your own config. - I’m currently using this README mostly to jot down notes for myself.
+> [!WARNING]
+> - I'm new to this.
+> - You almost definitely do not want to fork this repo for your own config. 
+> - I'm currently using this README mostly to jot down notes for myself. 
+
+## Install
+
+To install this config, make sure you backup any existing nvim config and then:
+
+    git clone https://github.com/pat-alt/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 ## Syncing Fork
 
