@@ -16,15 +16,23 @@
 return {
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add = { text = '█' },
+          change = { text = '█' },
+          delete = { text = '█' },
+          topdelete = { text = '█' },
+          changedelete = { text = '█' },
+        },
+        signs_staged = {
+          add = { text = '█' },
+          change = { text = '█' },
+          delete = { text = '█' },
+          topdelete = { text = '█' },
+          changedelete = { text = '█' },
+        },
+        on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
         local function map(mode, l, r, opts)
@@ -74,7 +82,24 @@ return {
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
         map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
       end,
-    },
+      }
+
+      -- Explicit highlight colors for git signs
+      local function set_gitsigns_hl()
+        vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = '#22c55e', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = '#eab308', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsDelete', { fg = '#ef4444', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsTopdelete', { fg = '#ef4444', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { fg = '#ef4444', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsStagedAdd', { fg = '#16a34a', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsStagedChange', { fg = '#ca8a04', bold = true })
+        vim.api.nvim_set_hl(0, 'GitSignsStagedDelete', { fg = '#dc2626', bold = true })
+      end
+
+      set_gitsigns_hl()
+      -- Re-apply after any colorscheme change
+      vim.api.nvim_create_autocmd('ColorScheme', { callback = set_gitsigns_hl })
+    end,
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
