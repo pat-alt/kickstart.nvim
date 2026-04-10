@@ -190,6 +190,11 @@ return {
         },
       }
 
+      -- Setup R LS manually (installed as R package, not through Mason)
+      require('lspconfig').r_language_server.setup {
+        capabilities = capabilities,
+      }
+
       -- Setup Julia LS manually (not through Mason)
       require('lspconfig').julials.setup {
         capabilities = capabilities,
