@@ -243,6 +243,11 @@ return {
 
         -- NOTE: julials is NOT managed by Mason - see manual setup below
 
+        -- Setup R LS manually (installed as R package, not through Mason)
+        require('lspconfig').r_language_server.setup {
+          capabilities = capabilities,
+        };
+
         harper_ls = {
           filetypes = { 'lua', 'markdown', 'quarto' },
           settings = {
