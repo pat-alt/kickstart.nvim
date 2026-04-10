@@ -55,6 +55,9 @@ return {
         -- chosen, you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
+        performance = {
+          fetching_timeout = 2000,
+        },
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
           ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -114,6 +117,7 @@ return {
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'pandoc_references' },
+          { name = 'minuet' },
         },
       }
     end,

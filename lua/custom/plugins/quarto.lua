@@ -38,7 +38,7 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'quarto',
         callback = function()
-          require('otter').activate { 'julia', 'python', 'bash' }
+          require('otter').activate { 'julia', 'python', 'bash', 'r' }
         end,
       })
     end,
