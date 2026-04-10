@@ -69,6 +69,8 @@ return {
             i = {
               ['<M-Up>'] = require('telescope.actions').cycle_history_prev,
               ['<M-Down>'] = require('telescope.actions').cycle_history_next,
+              ['<C-p>'] = require('telescope.actions').cycle_history_prev,
+              ['<C-n>'] = require('telescope.actions').cycle_history_next,
               ['<c-enter>'] = 'to_fuzzy_refine',
               ['<C-r>'] = function()
                 require('telescope.builtin').command_history()

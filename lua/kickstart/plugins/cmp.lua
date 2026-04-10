@@ -49,7 +49,10 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        completion = {
+          completeopt = 'menu,menuone,noinsert',
+          autocomplete = false,
+        },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -117,7 +120,6 @@ return {
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'pandoc_references' },
-          { name = 'minuet' },
         },
       }
     end,

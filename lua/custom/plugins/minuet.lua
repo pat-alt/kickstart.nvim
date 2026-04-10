@@ -5,22 +5,30 @@ return {
   },
   config = function()
     require('minuet').setup {
-      provider = 'claude',
+      provider = 'openai_compatible',
       notify = 'warn',
       virtualtext = {
-        auto_trigger_ft = {},
+        auto_trigger_ft = { '*' },
         keymap = {
-          accept = '<A-a>',
-          accept_line = '<A-l>',
-          prev = '<A-[>',
-          next = '<A-]>',
-          dismiss = '<A-e>',
+          accept = '<C-y>',
+          accept_line = '<C-S-y>',
+          prev = '<C-k>',
+          next = '<C-j>',
+          dismiss = '<C-e>',
         },
       },
-      claude = {
-        model = 'claude-haiku-4-5-20251001',
-        max_tokens = 512,
-        api_key = 'ANTHROPIC_API_KEY',
+      provider_options = {
+        openai_compatible = {
+          api_key = 'LITELLM_API_KEY',
+          end_point = 'https://litellm.prod.hbk.com/v1/chat/completions',
+          model = 'gpt-5.3-codex',
+          name = 'LiteLLM',
+          max_tokens = 512,
+          optional = {
+            stop = nil,
+            max_tokens = 512,
+          },
+        },
       },
     }
   end,
