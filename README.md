@@ -1,8 +1,8 @@
 
 
-# kickstart.nvim
+# Neovim
 
-This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). I’ve started using Neovim in 2025H1, so I’m still very new to this. For this reason, I’m including the following disclaimer here:
+This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) and detached in early 2026 to avoid merge nightmares. I started using Neovim in 2025H1, so I’m still very new to this. For this reason, I’m including the following disclaimer here:
 
 > [!WARNING]
 > - I'm new to this.
@@ -13,15 +13,7 @@ This is my personal Neovim config originally forked from [nvim-lua/kickstart.nvi
 
 To install this config, make sure you backup any existing nvim config and then:
 
-    git clone https://github.com/pat-alt/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-
-## Syncing Fork
-
-Syncing can be a little annoying, because I’ve moved to a more modular structure. Still, for the time being, I’m trying to sync regularly. To do so:
-
-1.  Merge updates from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) into the \#updates-from-master branch.
-2.  Resolve inevitable conflicts.
-3.  Merge into \#main.
+    git clone https://github.com/pat-alt/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 ## Julia
 
