@@ -93,6 +93,10 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Default to 4-space indent for Julia and R (vim-sleuth overrides when it detects otherwise)
+vim.g.sleuth_julia_defaults = 'shiftwidth=4 expandtab'
+vim.g.sleuth_r_defaults = 'shiftwidth=4 expandtab'
+
 -- [[ Custom things ]]
 require 'custom.config.theme-terminal'
 -- require 'custom.config.julials'
