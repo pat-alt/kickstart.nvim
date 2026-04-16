@@ -63,4 +63,6 @@ wk.add({
   },
   -- Insert comments
   { '<leader>i', group = '[I]nsert' },
+  -- AI (CodeCompanion) — group only, keymaps in plugin spec keys table
+  { '<leader>a', group = '[A]I', mode = { 'n', 'v' } },
 }, { mode = 'n' })
