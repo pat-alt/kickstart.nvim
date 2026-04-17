@@ -9,16 +9,21 @@ local function ollama_available()
 end
 
 -- Custom inline_output handler that strips code fences the model
--- sometimes embeds inside the JSON code field.
+-- sometimes embeds inside the JSON code field. Handles both OpenAI
+-- (json.choices[1].message.content) and Ollama (json.message.content) formats.
 local function clean_inline_output(self, data)
   if data and data ~= '' then
     local ok, json = pcall(vim.json.decode, data.body, { luanil = { object = true } })
     if not ok then
       return { status = 'error', output = json }
     end
-    local choice = json.choices[1]
-    if choice.message.content then
-      local content = choice.message.content
+    local content
+    if json.choices and json.choices[1] and json.choices[1].message then
+      content = json.choices[1].message.content
+    elseif json.message then
+      content = json.message.content
+    end
+    if content then
       local cok, cjson = pcall(vim.json.decode, content, { luanil = { object = true } })
       if cok and type(cjson) == 'table' and cjson.code then
         cjson.code = cjson.code:gsub('^```%w*\n', ''):gsub('\n```%s*$', '')
