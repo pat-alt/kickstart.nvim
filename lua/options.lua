@@ -56,9 +56,36 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
+-- Enable 24-bit (truecolor) highlights so hex colors below work.
+vim.opt.termguicolors = true
+
+-- Default colorscheme. Switch interactively via `<leader>vc` (`:Telescope colorscheme`).
+vim.cmd.colorscheme 'lunaperche'
+
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+
+-- Make the CursorColumn bar more prominent, and keep it that way when the
+-- colorscheme or background changes (`<leader>vc` / `<leader>td`).
+local cursor_col_group = vim.api.nvim_create_augroup('UserCursorColumn', { clear = true })
+local function tweak_cursor_column()
+  -- Inherit the active theme's own ColorColumn background so the bar stays
+  -- theme-appropriate on any colorscheme.
+  local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = 'ColorColumn', link = false })
+  if ok and hl and hl.bg then
+    pcall(vim.api.nvim_set_hl, 0, 'CursorColumn', { bg = hl.bg })
+  end
+end
+vim.api.nvim_create_autocmd({ 'ColorScheme', 'VimEnter' }, {
+  group = cursor_col_group,
+  callback = tweak_cursor_column,
+})
+vim.api.nvim_create_autocmd('OptionSet', {
+  group = cursor_col_group,
+  pattern = 'background',
+  callback = tweak_cursor_column,
+})
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
