@@ -59,6 +59,32 @@ println("hello")
 
 > \[!warning\] Deprecated `lspconfig` API This is using the `lspconfig` API which will be deprecated in future versions of nvim.
 
+## Papis (bibliography management)
+
+[`papis.nvim`](https://github.com/jghauser/papis.nvim) integrates the [Papis](https://papis.readthedocs.io/) bibliography manager into Neovim (see `lua/custom/plugins/papis.lua`). On a new machine, the following system-level setup is needed before the plugin will work:
+
+1.  **Install the `papis` CLI** (Python package):
+
+    ``` bash
+    pipx install papis   # or: pip install --user papis
+    ```
+
+2.  **Create a Papis config** at `~/.config/papis/config` with at least one library pointing at a directory of references, e.g.:
+
+    ``` ini
+    [papers]
+    dir = ~/Documents/papers
+
+    [settings]
+    default-library = papers
+    ```
+
+3.  **Ensure `sqlite3` is available** on the system — `papis.nvim` depends on [`kkharji/sqlite.lua`](https://github.com/kkharji/sqlite.lua), which needs the system `libsqlite3` library (on macOS: `brew install sqlite`; on most Linux distros it is already installed).
+
+4.  **Luarocks is disabled** for `lazy.nvim` (`rocks = { enabled = false, hererocks = false }` in `lua/lazy-plugins.lua`) — both `papis.nvim` and `sqlite.lua` are loaded with `build = false` so no `luarocks`/`hererocks` toolchain is required.
+
+Once these are in place, open a supported filetype (`markdown`, `quarto`, `rmd`, `typst`, `norg`, `yaml`) and run `:Papis` to trigger the plugin; cite-key completion is wired through `nvim-cmp`.
+
 ## Best Practices … maybe
 
 ### Lazy
