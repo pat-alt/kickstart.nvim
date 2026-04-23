@@ -43,6 +43,8 @@ return {
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
 
+      require('citeref.backends.cmp').register()
+
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -119,6 +121,7 @@ return {
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'pandoc_references' },
+          { name = 'citeref' },
         },
       }
     end,

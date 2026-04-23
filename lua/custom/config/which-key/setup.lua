@@ -27,6 +27,7 @@ wk.add({
   },
   -- Search
   { '<leader>st', ':TodoTelescope<cr>', desc = '[T]odo' },
+  { '<leader>sp', ':Papis search<cr>', desc = '[P]apis' },
   -- Search and Replace
   { '<leader>r', group = '[R]eplace' },
   { '<leader>rf', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Search and replace in [f]ile' },
